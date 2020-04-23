@@ -10,7 +10,10 @@ package laboratoriosiu;
  * @author Geovani
  */
 public class INGRESO extends javax.swing.JFrame {
-
+    
+    private FACULTAD ventanaFacultad;
+    private CURSOS ventanaCursos;
+    private ALUMNOS_CURSOS ventanaAlumnosCursos;
     /**
      * Creates new form INGRESO
      */
@@ -38,6 +41,7 @@ public class INGRESO extends javax.swing.JFrame {
         jMenuSecciones = new javax.swing.JMenuItem();
         jMenuCarreras = new javax.swing.JMenuItem();
         jMenuCursos = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -54,6 +58,11 @@ public class INGRESO extends javax.swing.JFrame {
         );
 
         jMenu1.setText("OPCIONES");
+        jMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu1MouseClicked(evt);
+            }
+        });
 
         jMenuAlumnos.setText("ALUMNOS");
         jMenu1.add(jMenuAlumnos);
@@ -62,6 +71,11 @@ public class INGRESO extends javax.swing.JFrame {
         jMenu1.add(jMenuMaestros);
 
         jMenuFacultades.setText("FACULTADES");
+        jMenuFacultades.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuFacultadesActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuFacultades);
 
         jMenuSecciones.setText("SECCIONES");
@@ -71,7 +85,20 @@ public class INGRESO extends javax.swing.JFrame {
         jMenu1.add(jMenuCarreras);
 
         jMenuCursos.setText("CURSOS");
+        jMenuCursos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuCursosActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuCursos);
+
+        jMenuItem1.setText("ASIGNACION NOTAS");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem1);
 
         jMenuBar1.add(jMenu1);
 
@@ -93,6 +120,30 @@ public class INGRESO extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jMenuFacultadesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuFacultadesActionPerformed
+        ventanaFacultad = new FACULTAD();
+        jDesktopPane1.add(ventanaFacultad);
+        
+    }//GEN-LAST:event_jMenuFacultadesActionPerformed
+
+    private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
+        // TODO add your handling code here:
+         
+        
+    }//GEN-LAST:event_jMenu1MouseClicked
+
+    private void jMenuCursosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuCursosActionPerformed
+        // TODO add your handling code here:
+        ventanaCursos = new CURSOS();
+        jDesktopPane1.add(ventanaCursos);
+    }//GEN-LAST:event_jMenuCursosActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+        ventanaAlumnosCursos = new ALUMNOS_CURSOS();
+        jDesktopPane1.add(ventanaAlumnosCursos);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -138,6 +189,7 @@ public class INGRESO extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuCarreras;
     private javax.swing.JMenuItem jMenuCursos;
     private javax.swing.JMenuItem jMenuFacultades;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuMaestros;
     private javax.swing.JMenuItem jMenuSecciones;
     // End of variables declaration//GEN-END:variables

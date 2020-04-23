@@ -13,6 +13,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="ALUMNOS"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuAlumnosActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuMaestros">
               <Properties>
@@ -31,6 +34,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="SECCIONES"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuSeccionesActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuCarreras">
               <Properties>

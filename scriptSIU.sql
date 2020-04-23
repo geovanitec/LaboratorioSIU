@@ -55,5 +55,14 @@ codigoMaestros varchar(5)
 create table cursoAlumnos(
 codigoCursos varchar(5) not null,
 codigoAlumnos varchar(5) not null,
+<<<<<<< HEAD
 nota int not null
 )engine=InnoDB Default charset = Latin1 ;
+=======
+nota varchar(3) not null
+)engine=InnoDB Default charset = Latin1 ;
+
+select * from alumnos;
+select * from secciones;
+#drop database universidad;
+>>>>>>> 6457147e9f32adf1a813e4ae0a7ee958e4fe7be0

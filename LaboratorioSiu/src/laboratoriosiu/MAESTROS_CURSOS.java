@@ -10,26 +10,23 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
-import static laboratoriosiu.ALUMNOS.password;
-import static laboratoriosiu.ALUMNOS.server;
-import static laboratoriosiu.ALUMNOS.user;
 
 /**
  *
  * @author SEBAS
  */
-public class ALUMNOS_CURSOS extends javax.swing.JInternalFrame {
-     public static String db = "universidad";
-    public static String user = "root";
-    public static String password = "Cagada1234";
-    public static String host = "localhost";
-    public static String server = "jdbc:mysql://"+ host + "/" +db;
+public class MAESTROS_CURSOS extends javax.swing.JInternalFrame {
+    private static String db = "universidad";
+    private static String user = "root";
+    private static String password = "Cagada1234";
+    private static String host = "localhost";
+    private static String server = "jdbc:mysql://"+ host + "/" +db; 
     /**
-     * Creates new form MAESTROS_CURSOS
+     * Creates new form ALUMNOS_MAESTROS
      */
-    public ALUMNOS_CURSOS() {
+    public MAESTROS_CURSOS() {
         initComponents();
-        this.setTitle(" MANTENIMIENTO ALUMNOS CURSOS Sebastian Moreira ");
+        this.setTitle(" MANTENIMIENTO MAESTROS CURSOS Sebastian Moreira  ");
     }
 
     /**
@@ -42,23 +39,22 @@ public class ALUMNOS_CURSOS extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         txtNombreCurso = new javax.swing.JTextField();
-        txtNombreAlumno = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         label_status = new javax.swing.JLabel();
-        txt_buscarCurso = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        btnBuscar = new javax.swing.JButton();
         btnGuardar = new javax.swing.JButton();
-        jLabel6 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        txt_buscarAlumno = new javax.swing.JTextField();
         btnVaciar = new javax.swing.JButton();
-        btnBuscar1 = new javax.swing.JButton();
         btnModificar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
-        txtNota = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
+        txtNombreMaestros = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        txt_buscarCurso = new javax.swing.JTextField();
+        btnBuscarCurso = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        txt_buscarMaestros = new javax.swing.JTextField();
+        btnBuscarAlunos = new javax.swing.JButton();
+        btnBuscarNombreCurso = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
@@ -72,20 +68,9 @@ public class ALUMNOS_CURSOS extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel1.setText("NOMBRE ALUMNO:");
-
-        jLabel5.setText("Ingresa el código de la curso: ");
+        jLabel1.setText("NOMBRE MAESTROS:");
 
         label_status.setText("Estado");
-
-        jLabel3.setText("NOTA:");
-
-        btnBuscar.setText("Buscar");
-        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBuscarActionPerformed(evt);
-            }
-        });
 
         btnGuardar.setText("Registrar");
         btnGuardar.addActionListener(new java.awt.event.ActionListener() {
@@ -94,21 +79,12 @@ public class ALUMNOS_CURSOS extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel6.setText("Ingresa el código del alumno: ");
-
         jLabel4.setText("NOMBRE CURSO:");
 
         btnVaciar.setText("Vaciar Campos");
         btnVaciar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnVaciarActionPerformed(evt);
-            }
-        });
-
-        btnBuscar1.setText("Buscar");
-        btnBuscar1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBuscar1ActionPerformed(evt);
             }
         });
 
@@ -126,7 +102,37 @@ public class ALUMNOS_CURSOS extends javax.swing.JInternalFrame {
             }
         });
 
-        jButton1.setText("CURSOS");
+        jButton1.setText("ALUMNOS CURSOS");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jLabel5.setText("Ingresa el código de la curso: ");
+
+        btnBuscarCurso.setText("Buscar");
+        btnBuscarCurso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarCursoActionPerformed(evt);
+            }
+        });
+
+        jLabel6.setText("Ingresa el código del maestros: ");
+
+        btnBuscarAlunos.setText("Buscar");
+        btnBuscarAlunos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarAlunosActionPerformed(evt);
+            }
+        });
+
+        btnBuscarNombreCurso.setText("Buscar Nombre Curso");
+        btnBuscarNombreCurso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarNombreCursoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -141,12 +147,10 @@ public class ALUMNOS_CURSOS extends javax.swing.JInternalFrame {
                         .addGap(37, 37, 37)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtNota, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtNombreAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtNombreMaestros, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtNombreCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -160,23 +164,24 @@ public class ALUMNOS_CURSOS extends javax.swing.JInternalFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(btnVaciar)
                                 .addGap(18, 18, 18)
-                                .addComponent(label_status))))
+                                .addComponent(label_status))
+                            .addComponent(btnBuscarNombreCurso)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(29, 29, 29)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel6)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txt_buscarAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txt_buscarMaestros, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(btnBuscar1))
+                                .addComponent(btnBuscarAlunos))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel5)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(txt_buscarCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(btnBuscar)))))
-                .addContainerGap(75, Short.MAX_VALUE))
+                                .addComponent(btnBuscarCurso)))))
+                .addContainerGap(69, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -185,38 +190,36 @@ public class ALUMNOS_CURSOS extends javax.swing.JInternalFrame {
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnBuscar)
+                    .addComponent(btnBuscarCurso)
                     .addComponent(txt_buscarCurso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnBuscar1)
-                    .addComponent(txt_buscarAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBuscarAlunos)
+                    .addComponent(txt_buscarMaestros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 94, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtNombreCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnBuscarNombreCurso))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtNombreAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtNota, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnGuardar)
-                        .addComponent(btnModificar)
-                        .addComponent(btnEliminar))
+                            .addComponent(txtNombreMaestros, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(94, 94, 94)
+                        .addGap(38, 38, 38)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnGuardar)
+                            .addComponent(btnModificar)
+                            .addComponent(btnEliminar))
+                        .addGap(33, 33, 33)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(label_status)
                             .addComponent(btnVaciar))))
-                .addGap(64, 64, 64))
+                .addGap(88, 88, 88))
         );
 
         pack();
@@ -232,19 +235,24 @@ public class ALUMNOS_CURSOS extends javax.swing.JInternalFrame {
             //local host y el nombre de la base de datos y la contraseña
             Connection cn = DriverManager.getConnection(server, user, password);
             //Esto permitirá el insert
-            PreparedStatement pst = cn.prepareStatement("insert into cursoAlumnos values(?,?,?,?)");
+            PreparedStatement pst = cn.prepareStatement("insert into cursoMaestro values(?,?,?)");
 
             //El primer parametro de cada setString es cada ?
-            pst.setString(1,"0");
+            pst.setString(1, "0");
             pst.setString(2, txtNombreCurso.getText().trim());
-            pst.setString(3, txtNombreAlumno.getText().trim());
-            pst.setString(4, txtNota.getText().trim());
+            pst.setString(3, txtNombreMaestros.getText().trim());
+            
 
             pst.executeUpdate();
 
             txtNombreCurso.setText("");
-            txtNombreAlumno.setText("");
-            txtNota.setText("");
+            txtNombreMaestros.setText("");
+           
+                    txtNombreCurso.setText("");
+        txtNombreMaestros.setText("");
+       
+        txt_buscarCurso.setText("");
+        txt_buscarMaestros.setText("");
 
             label_status.setText("Registro exitoso.");
         }catch (Exception e){
@@ -255,10 +263,10 @@ public class ALUMNOS_CURSOS extends javax.swing.JInternalFrame {
     private void btnVaciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVaciarActionPerformed
         // TODO add your handling code here:
         txtNombreCurso.setText("");
-        txtNombreAlumno.setText("");
-        txtNota.setText("");
+        txtNombreMaestros.setText("");
+       
         txt_buscarCurso.setText("");
-        txt_buscarAlumno.setText("");
+        txt_buscarMaestros.setText("");
     }//GEN-LAST:event_btnVaciarActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
@@ -267,21 +275,21 @@ public class ALUMNOS_CURSOS extends javax.swing.JInternalFrame {
             String ID = txtNombreCurso.getText().trim();
 
             Connection cn = DriverManager.getConnection(server, user, password);
-            PreparedStatement pst = cn.prepareStatement("update cursoAlumnos set nombreCurso = ?, nombreAlumno = ? , nota = ? where nombreCurso = " + ID);
+            PreparedStatement pst = cn.prepareStatement("update cursoMaestro set nombreCursos = ?, nombreMaestros = ?  nombreCurso = " + ID);
 
             pst.setString(1, txtNombreCurso.getText().trim());
-            pst.setString(2, txtNombreAlumno.getText().trim());
-            pst.setString(3, txtNota.getText().trim());
+            pst.setString(2, txtNombreMaestros.getText().trim());
+            
 
             pst.executeUpdate();
 
             label_status.setText("Modificación exitosa.");
 
             txtNombreCurso.setText("");
-            txtNombreAlumno.setText("");
-            txtNota.setText("");
+            txtNombreMaestros.setText("");
+         
             txt_buscarCurso.setText("");
-            txt_buscarAlumno.setText("");
+            txt_buscarMaestros.setText("");
         } catch (Exception e) {
         }
     }//GEN-LAST:event_btnModificarActionPerformed
@@ -290,14 +298,14 @@ public class ALUMNOS_CURSOS extends javax.swing.JInternalFrame {
         //Codigo que permite borrar registros en la base de datos
         try {
             Connection cn = DriverManager.getConnection(server, user, password);
-            PreparedStatement pst = cn.prepareStatement("delete from cursoAlumnos where nombreCurso = ?");
+            PreparedStatement pst = cn.prepareStatement("delete from cursoMaestros where nombreCurso = ?");
 
             pst.setString(1, txtNombreCurso.getText().trim());
             pst.executeUpdate();
 
             txtNombreCurso.setText("");
-            txtNombreAlumno.setText("");
-            txtNota.setText("");
+            txtNombreMaestros.setText("");
+           
             txt_buscarCurso.setText("");
             label_status.setText("Registro eliminado.");
 
@@ -305,9 +313,41 @@ public class ALUMNOS_CURSOS extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_btnEliminarActionPerformed
 
-    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        try{
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void btnBuscarNombreCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarNombreCursoActionPerformed
+        // TODO add your handling code here:
+         try{
+            //local host y el nombre de la base de datos y la contraseñña
+            Connection cn = DriverManager.getConnection(server, user, password);
+            //Esto permitirá el buscar registro a traves del ID
+            PreparedStatement pst = cn.prepareStatement("select * from cursos where codigoCursos = ?");
+            //El parametro 1 es de que solo un ? esta llenando y entra lo del txt
+            pst.setString(1, txt_buscarCurso.getText().trim());
+
+            //El result del query, lo que ira a traer
+            ResultSet rs = pst.executeQuery();
+
+            if(rs.next()){
+                txtNombreCurso.setText(rs.getString("nombreCursos"));
+                
+               
+
+                JOptionPane.showMessageDialog(null, "Facultad encontrada.");
+            } else {
+                JOptionPane.showMessageDialog(null, "Facultad no encontrada.");
+            }
+
+        }catch (Exception e){
+
+        }
+    }//GEN-LAST:event_btnBuscarNombreCursoActionPerformed
+
+    private void btnBuscarCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarCursoActionPerformed
+        // TODO add your handling code here:
+         try{
             //local host y el nombre de la base de datos y la contraseñña
             Connection cn = DriverManager.getConnection(server, user, password);
             //Esto permitirá el buscar registro a traves del ID
@@ -331,55 +371,54 @@ public class ALUMNOS_CURSOS extends javax.swing.JInternalFrame {
         }catch (Exception e){
 
         }
-    }//GEN-LAST:event_btnBuscarActionPerformed
+    }//GEN-LAST:event_btnBuscarCursoActionPerformed
 
-    private void btnBuscar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscar1ActionPerformed
+    private void btnBuscarAlunosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarAlunosActionPerformed
         // TODO add your handling code here:
-         try{
+          try{
             //local host y el nombre de la base de datos y la contraseñña
             Connection cn = DriverManager.getConnection(server, user, password);
             //Esto permitirá el buscar registro a traves del ID
-            PreparedStatement pst = cn.prepareStatement("select * from alumnos where carnetAlumnos = ?");
+            PreparedStatement pst = cn.prepareStatement("select * from maestros where codigoMaestros = ?");
             //El parametro 1 es de que solo un ? esta llenando y entra lo del txt
-            pst.setString(1, txt_buscarAlumno.getText().trim());
+            pst.setString(1, txt_buscarMaestros.getText().trim());
 
             //El result del query, lo que ira a traer
             ResultSet rs = pst.executeQuery();
 
             if(rs.next()){
-                txtNombreAlumno.setText(rs.getString("nombreAlumnos"));
+                txtNombreMaestros.setText(rs.getString("nombreMaestros"));
                 
                
 
-                JOptionPane.showMessageDialog(null, "Facultad encontrada.");
+                JOptionPane.showMessageDialog(null, "Maestro encontrada.");
             } else {
-                JOptionPane.showMessageDialog(null, "Facultad no encontrada.");
+                JOptionPane.showMessageDialog(null, "Maestro no encontrada.");
             }
 
         }catch (Exception e){
 
         }
-    }//GEN-LAST:event_btnBuscar1ActionPerformed
+    }//GEN-LAST:event_btnBuscarAlunosActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnBuscar;
-    private javax.swing.JButton btnBuscar1;
+    private javax.swing.JButton btnBuscarAlunos;
+    private javax.swing.JButton btnBuscarCurso;
+    private javax.swing.JButton btnBuscarNombreCurso;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnModificar;
     private javax.swing.JButton btnVaciar;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel label_status;
-    private javax.swing.JTextField txtNombreAlumno;
     private javax.swing.JTextField txtNombreCurso;
-    private javax.swing.JTextField txtNota;
-    private javax.swing.JTextField txt_buscarAlumno;
+    private javax.swing.JTextField txtNombreMaestros;
     private javax.swing.JTextField txt_buscarCurso;
+    private javax.swing.JTextField txt_buscarMaestros;
     // End of variables declaration//GEN-END:variables
 }

@@ -56,6 +56,11 @@ public class INGRESO extends javax.swing.JFrame {
         jMenu1.setText("OPCIONES");
 
         jMenuAlumnos.setText("ALUMNOS");
+        jMenuAlumnos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuAlumnosActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuAlumnos);
 
         jMenuMaestros.setText("MAESTROS");
@@ -65,6 +70,11 @@ public class INGRESO extends javax.swing.JFrame {
         jMenu1.add(jMenuFacultades);
 
         jMenuSecciones.setText("SECCIONES");
+        jMenuSecciones.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuSeccionesActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuSecciones);
 
         jMenuCarreras.setText("CARRERAS");
@@ -93,6 +103,24 @@ public class INGRESO extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jMenuAlumnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuAlumnosActionPerformed
+
+        ALUMNOS ventana = new ALUMNOS ();
+        jDesktopPane1.add(ventana);
+
+
+// TODO add your handling code here:
+    }//GEN-LAST:event_jMenuAlumnosActionPerformed
+
+    private void jMenuSeccionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuSeccionesActionPerformed
+
+        SECCIONES ventana = new SECCIONES();
+        jDesktopPane1.add(ventana);
+
+
+// TODO add your handling code here:
+    }//GEN-LAST:event_jMenuSeccionesActionPerformed
 
     /**
      * @param args the command line arguments

@@ -5,6 +5,8 @@
  */
 package laboratoriosiu;
 
+import java.awt.Dimension;
+
 /**
  *
  * @author Geovani
@@ -59,6 +61,11 @@ public class INGRESO extends javax.swing.JFrame {
         jMenu1.add(jMenuAlumnos);
 
         jMenuMaestros.setText("MAESTROS");
+        jMenuMaestros.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuMaestrosActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuMaestros);
 
         jMenuFacultades.setText("FACULTADES");
@@ -68,6 +75,11 @@ public class INGRESO extends javax.swing.JFrame {
         jMenu1.add(jMenuSecciones);
 
         jMenuCarreras.setText("CARRERAS");
+        jMenuCarreras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuCarrerasActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuCarreras);
 
         jMenuCursos.setText("CURSOS");
@@ -93,6 +105,30 @@ public class INGRESO extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jMenuMaestrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuMaestrosActionPerformed
+        // TODO add your handling code here:
+        Maestros ventanamaestros = new Maestros();
+        jDesktopPane1.add(ventanamaestros);
+        Dimension desktopSize = jDesktopPane1.getSize();
+        Dimension FrameSize = ventanamaestros.getSize();
+        ventanamaestros.setLocation((desktopSize.width - FrameSize.width)/2, (desktopSize.height- FrameSize.height)/2);
+        ventanamaestros.show();
+        
+        
+    }//GEN-LAST:event_jMenuMaestrosActionPerformed
+
+    private void jMenuCarrerasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuCarrerasActionPerformed
+        // TODO add your handling code here:
+        
+        carreras ventanacarreras = new carreras();
+        jDesktopPane1.add(ventanacarreras);
+        Dimension desktopSize = jDesktopPane1.getSize();
+        Dimension FrameSize = ventanacarreras.getSize();
+        ventanacarreras.setLocation((desktopSize.width - FrameSize.width)/2, (desktopSize.height- FrameSize.height)/2);
+        ventanacarreras.show();
+        
+    }//GEN-LAST:event_jMenuCarrerasActionPerformed
 
     /**
      * @param args the command line arguments
